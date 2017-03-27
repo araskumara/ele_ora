@@ -1,0 +1,19 @@
+<html>
+    {% load app_filters %}
+    <table border = "1">
+    <tr>
+        <td> Sender </td>
+        <td> Message </td>
+        <td> SMS classification </td>
+        <td> Date and Time </td>
+    </tr>
+    {% for sms in json_c.messages %}
+        <tr>
+            <td> {{ sms.number }} </td>
+            <td> {{ sms.text }} </td>
+            <td> {{ sms.number|smsclassification }}</td>
+            <td> {{ sms.datetime|date:"D d M Y"}} {{sms.datetime|date:"H:i"}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+</html>
